@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn HTML - The Ultimate Coding App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* CSS RESET & VARIABLES */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f59e0b;
+            --bg-dark: #0f172a;
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --card-bg: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .btn-nav {
+            background: var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 5px;
+            color: white !important;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10rem 5% 5rem;
+            min-height: 100vh;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--secondary-color);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .download-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            background: white;
+            color: black;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .store-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        .store-btn i {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        .store-btn span {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: right;
+            position: relative;
+        }
+
+        /* Mockup Mobile Phone */
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 40px;
+            border: 10px solid #334155;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+        
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 25px;
+            background: #334155;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .phone-content {
+            text-align: center;
+        }
+        
+        .phone-content h3 { color: #e34c26; font-size: 2rem; }
+        .phone-content p { font-size: 0.9rem; color: #aaa; margin-top: 10px;}
+
+        /* FEATURES SECTION */
+        .features {
+            padding: 5rem 5%;
+            background: #1e293b;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #94a3b8;
+        }
+
+        /* SYLLABUS / CONTENT SECTION */
+        .syllabus {
+            padding: 5rem 5%;
+        }
+
+        .syllabus-list {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .syllabus-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .syllabus-item:last-child {
+            border-bottom: none;
+        }
+
+        .syllabus-number {
+            background: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 1.5rem;
+        }
+
+        .syllabus-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .syllabus-text p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-links {
+            margin: 1.5rem 0;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 8rem;
+            }
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .download-btns {
+                justify-content: center;
+            }
+            .nav-links {
+                display: none; /* Add a hamburger menu here for full implementation */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+    <a href="#" class="logo">&lt;HTML/&gt;<span>Mastery</span></a>
+    <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#curriculum">Syllabus</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#download" class="btn-nav">Download Now</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Master Web Development.<br><span>Start with HTML.</span></h1>
+        <p>Read like a book, practice like a pro. This app is designed to take you from HTML basics to advanced levels step-by-step. Start your coding journey today!</p>
+        
+        <div class="download-btns" id="download">
+            <a href="#" class="store-btn">
+                <i class="fab fa-google-play" style="color: #34A853;"></i>
+                <div>
+                    <span>GET IT ON</span>
+                    Google Play
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="phone-mockup">
+            <div class="phone-content">
+                <i class="fab fa-html5" style="font-size: 4rem; color: #e34c26; margin-bottom: 1rem;"></i>
+                <h3>HTML Guide</h3>
+                <p>Chapter 1: The Beginning</p>
+                <div style="margin-top:20px; width: 80%; background:#334155; height: 10px; border-radius:5px; margin-left:auto; margin-right:auto;"></div>
+                <div style="margin-top:10px; width: 60%; background:#334155; height: 10px; border-radius:5px; margin-left:auto; margin-right:auto;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <h2 class="section-title">Why Learn With Us?</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <i class="fas fa-book-open feature-icon"></i>
+            <h3>Book-Style Layout</h3>
+            <p>The UI is designed just like a physical book to help you focus better and reduce eye strain while reading.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-wifi-slash feature-icon"></i>
+            <h3>100% Offline Access</h3>
+            <p>Learn coding anywhere, anytime without an internet connection. Download once and access all content offline.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-code feature-icon"></i>
+            <h3>Practical Examples</h3>
+            <p>Every concept comes with real-world code snippets and examples to help you understand how code actually works.</p>
+        </div>
+    </div>
+</section>
+
+<section class="syllabus" id="curriculum">
+    <h2 class="section-title">What You Will Learn</h2>
+    <div class="syllabus-list">
+        <div class="syllabus-item">
+            <div class="syllabus-number">1</div>
+            <div class="syllabus-text">
+                <h4>Introduction to HTML</h4>
+                <p>Understanding Tags, Elements, Attributes, and the basic structure of a web page.</p>
+            </div>
+        </div>
+        <div class="syllabus-item">
+            <div class="syllabus-number">2</div>
+            <div class="syllabus-text">
+                <h4>Text Formatting</h4>
+                <p>How to use Headings, Paragraphs, Bold, Italic, and styling text for readability.</p>
+            </div>
+        </div>
+        <div class="syllabus-item">
+            <div class="syllabus-number">3</div>
+            <div class="syllabus-text">
+                <h4>Hyperlinks & Images</h4>
+                <p>Connecting multiple pages using links and adding visual appeal with images.</p>
+            </div>
+        </div>
+        <div class="syllabus-item">
+            <div class="syllabus-number">4</div>
+            <div class="syllabus-text">
+                <h4>Tables & Lists</h4>
+                <p>Organizing complex data using Ordered/Unordered lists and structured tables.</p>
+            </div>
+        </div>
+        <div class="syllabus-item">
+            <div class="syllabus-number">5</div>
+            <div class="syllabus-text">
+                <h4>HTML5 Advanced Forms</h4>
+                <p>Creating modern login, registration, and feedback forms using advanced inputs.</p>
+            </div>
+        </div>
+
+        <div class="syllabus-item" style="border-bottom: none; opacity: 0.7; border: 2px dashed rgba(255,255,255,0.1); margin-top: 15px; border-radius: 10px;">
+            <div class="syllabus-number" style="background: #475569;">+</div>
+            <div class="syllabus-text">
+                <h4>And 20+ More Chapters...</h4>
+                <p>Semantic HTML, Media Tags, Meta tags, and much more inside the app!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h2 style="color: white; margin-bottom: 1rem;">Ready to Start Your Journey?</h2>
+    <p style="color: #94a3b8; margin-bottom: 2rem;">Join thousands of students and become a web developer today.</p>
+    
+    <div class="footer-links" id="privacy">
+        <a href="https://github.com/Sankit-Sharma111/Demo/blob/main/privacy.html">Privacy Policy</a>
+        <a href="#">Support: support@yourapp.com</a>
+    </div>
+    <p style="color: #475569; font-size: 0.9rem; margin-top: 20px;">&copy; 2026 [Developer Name]. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
