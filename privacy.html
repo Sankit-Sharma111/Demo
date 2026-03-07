@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Box Shadows & UI Trends</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 50px;
+            gap: 40px;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 20px;
+            padding: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 1. Basic Shadow */
+        .basic-shadow {
+            background: white;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* 2. Soft/Floating Shadow */
+        .floating-shadow {
+            background: white;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        /* 3. Inset Shadow (Pressed Look) */
+        .inset-shadow {
+            background: #eee;
+            box-shadow: inset 5px 5px 10px #ccc, inset -5px -5px 10px #fff;
+        }
+
+        /* 4. Colored Glow Shadow */
+        .glow-shadow {
+            background: #6c5ce7;
+            color: white;
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.6);
+        }
+
+        /* 5. NEUMORPHISM (Soft UI) */
+        .neumorphism {
+            background: #e2ebf0; /* Body background se match hona chahiye */
+            box-shadow: 20px 20px 60px #c0c8cc, -20px -20px 60px #ffffff;
+        }
+
+        /* 6. GLASSMORPHISM (Frosted Glass) */
+        /* Iske piche thoda color gradient zaroori hai effect dikhne ke liye */
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="box basic-shadow">Basic Shadow</div>
+        <div class="box floating-shadow">Floating / Modern Shadow</div>
+        <div class="box inset-shadow">Inset (Inner) Shadow</div>
+        <div class="box glow-shadow">Colored Glow</div>
+        <div class="box neumorphism">Neumorphism<br>(Soft UI)</div>
+        <div class="box glassmorphism">Glassmorphism<br>(Frosted Glass)</div>
+    </div>
+
+</body>
+</html>
