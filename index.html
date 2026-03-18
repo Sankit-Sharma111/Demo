@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn HTML - The Ultimate Coding App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Base Styling & Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background-color: #0f172a; color: #f8fafc; overflow-x: hidden; }
+
+        /* --- NAVBAR STYLING --- */
+        .navbar { position: fixed; top: 0; width: 100%; padding: 20px 10%; display: flex; justify-content: space-between; align-items: center; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 1.8rem; font-weight: 800; color: white; cursor: pointer; }
+        .logo span { color: #38bdf8; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { color: #e2e8f0; text-decoration: none; font-weight: 600; font-size: 1rem; transition: color 0.3s ease; }
+        .nav-links a:hover { color: #38bdf8; }
+        .menu-icon { display: none; font-size: 1.8rem; color: white; cursor: pointer; transition: transform 0.3s ease; }
+
+        /* Typography */
+        h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        h2 { font-size: 2.5rem; margin-bottom: 20px; color: #38bdf8; }
+        p { font-size: 1.1rem; line-height: 1.6; color: #94a3b8; margin-bottom: 30px; }
+
+        /* Container Setup */
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 10% 50px; text-align: center; }
+        .hero { background: radial-gradient(circle at top, #1e293b, #0f172a); }
+        .hero span { color: #38bdf8; }
+
+        /* Buttons Styling */
+        .btn-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+        .btn { padding: 15px 30px; font-size: 1.1rem; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
+        .btn-primary { background: linear-gradient(135deg, #38bdf8, #2563eb); color: white; box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(56, 189, 248, 0.5); }
+        .btn-secondary { background: transparent; color: #38bdf8; border: 2px solid #38bdf8; }
+        .btn-secondary:hover { background: rgba(56, 189, 248, 0.1); transform: translateY(-5px); }
+        .play-icon { font-size: 22px; color: #4ade80; } /* Added your icon color styling */
+
+        /* Features Section */
+        .features { background-color: #1e293b; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; width: 100%; max-width: 1200px; margin-top: 40px; }
+        .card { background: #0f172a; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-10px); border-bottom: 4px solid #38bdf8; }
+        .card i { font-size: 3rem; color: #38bdf8; margin-bottom: 20px; }
+
+        /* Call to Action Section */
+        .cta-section { background: linear-gradient(135deg, #2563eb, #1e40af); color: white; }
+        .cta-section p { color: #e2e8f0; }
+        .cta-section .btn-secondary { color: white; border-color: white; }
+        .cta-section .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+
+        /* Scroll Animations */
+        .reveal { opacity: 0; transform: translateY(80px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        footer { text-align: center; padding: 20px; background: #0b1120; color: #64748b; }
+
+        /* --- MOBILE RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .menu-icon { display: block; }
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(15px); flex-direction: column; align-items: center; padding: 30px 0; gap: 25px; transform: translateY(-150%); opacity: 0; transition: all 0.4s ease-in-out; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+            .nav-links.active { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">HTML<span>Tutorial</span></div>
+        <div class="menu-icon" id="menu-icon"><i class="fa-solid fa-bars"></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="nav-item">Home</a></li>
+            <li><a href="#features" class="nav-item">Features</a></li>
+            <li><a href="#editor" class="nav-item">Editor</a></li>
+            <li><a href="#download" class="nav-item">Download</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero reveal" id="home">
+        <h1>Master Web Dev with <span>Our App</span></h1>
+        <p>Interactive lessons, bite-sized coding challenges, and a community of developers. Start your journey to becoming a pro front-end developer today.</p>
+        
+        <div class="btn-container">
+            <a href="download-apk.html" target="_blank" class="btn btn-primary">
+                <i class="fa-solid fa-download"></i> Download APK
+            </a>
+            
+            <a href="https://play.google.com/store/apps/details?id=com.teejay.trebedit" 
+               class="btn btn-secondary" 
+               onclick="openPlayStore(event, 'com.teejay.trebedit')">
+                <i class="fa-brands fa-google-play play-icon"></i> Get Advanced Editor
+            </a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="reveal">Why Choose Us?</h2>
+        <p class="reveal">Everything you need to learn HTML, CSS, and JS perfectly.</p>
+        
+        <div class="grid">
+            <div class="card reveal">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Interactive Learning</h3>
+                <p>Learn by doing! Play coding games and solve puzzles that make understanding HTML syntax super fun and easy.</p>
+            </div>
+            
+            <div class="card reveal">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Advanced Editor</h3>
+                <p>Don't just read about code. Write it! Our standalone advanced editor comes with auto-complete and live preview.</p>
+                <div style="margin-top: 20px;">
+                    <a href="https://play.google.com/store/apps/details?id=com.teejay.trebedit" 
+                       onclick="openPlayStore(event, 'com.teejay.trebedit')" 
+                       style="color: #38bdf8; text-decoration: none; font-weight: 600;">
+                       Download from Play Store →
+                    </a>
+                </div>
+            </div>
+
+            <div class="card reveal">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Fast Results</h3>
+                <p>Build real-world projects right from day one. You'll be designing your own responsive websites in no time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section reveal" id="download">
+        <h2>Ready to start coding?</h2>
+        <p>Join thousands of learners and start building your dream websites today.</p>
+        <div class="btn-container">
+            <a href="download-apk.html" target="_blank" class="btn btn-secondary">
+                <i class="fa-solid fa-file-arrow-down"></i> Direct APK File
+            </a>
+            
+            <a href="https://play.google.com/store/apps/details?id=com.teejay.trebedit" 
+               class="btn btn-secondary" 
+               onclick="openPlayStore(event, 'com.teejay.trebedit')">
+                <i class="fa-brands fa-google-play play-icon"></i> Play Store
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 HTML Learning App. Built for coders, by <b>Sankit Sharma</b>.</p>
+    </footer>
+
+    <script>
+        // --- SMART PLAY STORE REDIRECT LOGIC ---
+        function openPlayStore(e, packageId) {
+            e.preventDefault(); // Default link opening ko roko
+
+            // 1. Try opening via App Market/Play Store intent
+            window.location.href = "market://details?id=" + packageId;
+
+            // 2. Agar phone 'market://' nahi samjhta, toh 1.2s baad web browser mein khol do
+            setTimeout(() => {
+                window.location.href = "https://play.google.com/store/apps/details?id=" + packageId;
+            }, 1200);
+        }
+
+        // --- Navbar Hamburger Toggle ---
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+        const icon = menuIcon.querySelector('i');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // --- Scroll Animations ---
+        const observerOptions = { root: null, rootMargin: "0px", threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
